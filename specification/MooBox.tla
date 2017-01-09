@@ -1,5 +1,5 @@
-A cow runs on the side of a moo-box, the border is acting as the ground. The
-box has to be flipped to avoid obstacles.
+(* A cow runs on the side of a moo-box, the border is acting as the ground. The
+box has to be flipped to avoid obstacles. *)
 
 ---- MODULE MooBox ----
 EXTENDS Naturals
@@ -16,7 +16,7 @@ TypeInvariant == /\ orientation \in {"UP", "DOWN"}
 FlipBox == /\ orientation' = IF orientation = "UP" THEN "DOWN" ELSE "UP"
            /\ UNCHANGED position
 
-MoveRight == /\ position' = position + 1
+MoveRight == /\ position' = IF position # 100 THEN position + 1 ELSE 0
              /\ UNCHANGED orientation
 
 Step == FlipBox \/ MoveRight
